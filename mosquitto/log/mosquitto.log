@@ -1,0 +1,20 @@
+1740665433: mosquitto version 2.0.20 starting
+1740665433: Config loaded from /mosquitto/config/mosquitto.conf.
+1740665433: Opening ipv4 listen socket on port 1883.
+1740665433: Opening ipv6 listen socket on port 1883.
+1740665433: mosquitto version 2.0.20 running
+1740665445: New connection from 172.19.0.1:41056 on port 1883.
+1740665445: New client connected from 172.19.0.1:41056 as auto-76E09AA5-8B09-A0A3-EF9C-CA6D6ABF55DF (p2, c1, k60).
+1740665463: New connection from 172.19.0.1:55454 on port 1883.
+1740665463: New client connected from 172.19.0.1:55454 as auto-A3E48D91-883F-C8BD-D967-9634B32A2391 (p2, c1, k60).
+1740665463: Client auto-A3E48D91-883F-C8BD-D967-9634B32A2391 disconnected.
+1740665481: New connection from 172.19.0.1:58160 on port 1883.
+1740665481: New client connected from 172.19.0.1:58160 as auto-8597F2A7-3D94-B4F1-8E99-C36CD182AC50 (p2, c1, k60).
+1740665481: Client auto-8597F2A7-3D94-B4F1-8E99-C36CD182AC50 disconnected.
+1740665486: Client auto-76E09AA5-8B09-A0A3-EF9C-CA6D6ABF55DF disconnected.
+1740665609: New connection from 172.19.0.1:49518 on port 1883.
+1740665609: New client connected from 172.19.0.1:49518 as auto-5FDA68F1-9104-5936-28C7-6795D3B194E0 (p2, c1, k60).
+1740665618: New connection from 172.19.0.1:47028 on port 1883.
+1740665618: New client connected from 172.19.0.1:47028 as auto-CB4F343A-EC0B-7542-4CED-D7A2816B8B5E (p2, c1, k60).
+1740665618: Client auto-CB4F343A-EC0B-7542-4CED-D7A2816B8B5E disconnected.
+1740665626: Client auto-5FDA68F1-9104-5936-28C7-6795D3B194E0 disconnected.
