@@ -94,7 +94,7 @@ services:
       - mqtt_network
 
   publicador:
-    build: ./publicador
+    build: ./publicador #Definición de como se construye la imagen
     container_name: mqtt_publicador # Nombre del contenedor
     depends_on: # El servicio va a depender del contenedor que se especifique
       - mosquitto_broker # Contenedor del que depende
@@ -104,7 +104,7 @@ services:
       - ./mosquitto/config/certs:/app/certs
 
   suscriptor:
-    build: ./suscriptor
+    build: ./suscriptor #Definición de como se construye la imagen
     container_name: mqtt_suscriptor # Nombre del contenedor
     depends_on: # El servicio va a depender del contenedor que se especifique
       - mosquitto_broker # Contenedor del que depende
@@ -122,7 +122,6 @@ networks: # Definición de red personalizada para que los contenedores puedan ut
 ## Posibles vías de mejora
 
 Para mejorar el reto hemos pensado en el desarrollo de una página web en la que se ejecute de forma más visual el proyecto. Sin embargo, no hemos llegado a conseguir desarrollarlo.
-
 
 ## Problemas / Retos encontrados
 
