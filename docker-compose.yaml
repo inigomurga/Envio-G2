@@ -5,10 +5,12 @@ services:
     restart: always
     ports:
       - "1883:1883"
+      - "8883:8883"
     volumes:
       - ./mosquitto/config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
+      - ./mosquitto/certs:/mosquitto/certs
     networks:
       - mqtt_network
 
@@ -19,6 +21,8 @@ services:
       - mosquitto_broker
     networks:
       - mqtt_network
+    volumes:
+      - ./mosquitto/config/certs:/app/certs
 
   suscriptor:
     build: ./suscriptor
@@ -27,6 +31,8 @@ services:
       - mosquitto_broker
     networks:
       - mqtt_network
+    volumes:
+      - ./mosquitto/config/certs:/app/certs
 
 networks:
   mqtt_network:

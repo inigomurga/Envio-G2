@@ -1,7 +1,9 @@
 import paho.mqtt.client as mqtt
+import ssl
 import sys
 
 BROKER = "mosquitto_broker"
+PORT = 8883
 
 def on_message(client, userdata, msg):
     print(f"Recibido: {msg.payload.decode()} en el tema {msg.topic}")
@@ -14,8 +16,14 @@ def main():
     topic = f"casa/{sys.argv[1]}"  # casa/salon o casa/cocina
 
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
+    client.tls_set(
+        ca_certs="certs/ca.crt",
+        certfile="certs/client.crt",
+        keyfile="certs/client.key",
+        tls_version=ssl.PROTOCOL_TLS_CLIENT
+    )
     client.on_message = on_message
-    client.connect(BROKER, 1883, 60)
+    client.connect(BROKER, PORT, 60)
     client.subscribe(topic)
 
     print(f"Suscrito a {topic}. Esperando mensajes...")
