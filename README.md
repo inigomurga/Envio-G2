@@ -22,10 +22,9 @@ Tras construir y lanzar los contenedores, introducimos los comandos necesarios p
 
 Al saber que la comunicación es correcta, desarrollamos el código de los scripts para lograr la automatización de la suscripción y publicación de los mensajes.
 
-5. Realizar todas las configuraciones para la seguridad
+5. Implementar los certificados de seguridad
 
-Una vez que el proyecto sin seguridad está completo, procedemos a configurar todos los archivos necesarios para obtener la seguridad, además de generar todos los certificados necesarios.  
-
+Una vez que el proyecto sin certificados funciona de manera óptima, se han creado todos los certificados y se han implementado.
 ## Instalación
 
 1. Clonar el repositorio:
@@ -38,7 +37,7 @@ Una vez que el proyecto sin seguridad está completo, procedemos a configurar to
     ```
 3. Construir y lanza los contenedores Docker:
     ```bash
-    docker-compose up -d
+    docker compose up -d
     ```
 
 ## Uso
@@ -62,8 +61,9 @@ Una vez que el proyecto sin seguridad está completo, procedemos a configurar to
     ```python
     python suscriptor.py cocina
     ```
-    
-2. Mensajes mediante comandos:
+    El suscriptor decide a qué tópico suscribirse pasándole el subtema como parámetro.
+   
+3. Mensajes mediante comandos:
     ```bash
     mosquitto_sub -h mosquitto_broker -p 8883 --cafile /mosquitto/config/certs/ca.crt \ --cert /mosquitto/config/certs/client.crt --key /mosquitto/config/certs/client.key \ -t casa/salon -d  
     ```
@@ -85,7 +85,7 @@ services:
     ports: # Mapeo de puertos
       - "1883:1883" # Puertos específicos, el primero es en referencia al puerto local y el segundo al del contenedor de Docker 
       - "8883:8883"
-    volumes: # Volumen para la persistencia de datos
+    volumes: # Bind mounts para la configuración, persistencia de datos, logs y certificados
       - ./mosquitto/config:/mosquitto/config
       - ./mosquitto/data:/mosquitto/data
       - ./mosquitto/log:/mosquitto/log
@@ -100,7 +100,7 @@ services:
       - mosquitto_broker # Contenedor del que depende
     networks:
       - mqtt_network
-    volumes: # Volumen para la persistencia de datos
+    volumes: # Bind mount para los certificados
       - ./mosquitto/config/certs:/app/certs
 
   suscriptor:
@@ -110,12 +110,12 @@ services:
       - mosquitto_broker # Contenedor del que depende
     networks: # Definición de red personalizada para que los contenedores puedan utilizar
       - mqtt_network
-    volumes: # Volumen para la persistencia de datos
+    volumes: # Bind mount para los certificados
       - ./mosquitto/config/certs:/app/certs
 
 networks: # Definición de red personalizada para que los contenedores puedan utilizar
   mqtt_network:
-    driver: bridge #Tipo de red que se utiliza, comentando que los contenedores estan en el mismo host
+    driver: bridge #Tipo de red que se utiliza, comentando que los contenedores están en el mismo host
 
 ```
 
