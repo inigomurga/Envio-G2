@@ -131,6 +131,6 @@ A su vez, a la hora de desarrollar la seguridad con certificados hemos tenido m�
 
 ## Alternativas posibles
 
-Implementar una seguridad de forma diferente, como la introducción de credenciales en los clientes para diferenciarlos en la verificación de los mensajes.
+Implementar certificador de forma distinta, diferenciar certificados entre distintos clientes podría ser útil en un caso de uso más real.
 
 Usar una base de datos externa para el almacenamiento de datos.
